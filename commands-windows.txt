@@ -1,0 +1,16 @@
+python GeoSeg_23\tools\uavid_patch_split_green.py ^
+--input-dir "uavid_v1.5_official_release_image_bw\uavid_train" ^
+--output-img-dir "uavid_v1.5_official_release_image_bw\uavid_patch_train\Images" ^
+--output-mask-dir "uavid_v1.5_official_release_image_bw\uavid_patch_train\Masks" ^
+--mode 'train' --split-size-h 1024 --split-size-w 1024 ^
+--stride-h 1024 --stride-w 1024
+
+
+python GeoSeg_23\train_supervision.py -c GeoSeg_23\config\uavid\unetformer.py
+
+
+python GeoSeg_23/inference_uavid.py ^
+-i "trial_data" ^
+-c "GeoSeg_23/config/uavid/unetformer.py" ^
+-o "trial_data/results" ^
+-ph 1152 -pw 1024 -b 2 -d "uavid"

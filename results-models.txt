@@ -1,0 +1,3 @@
+UNetFormer - working (all outputs blank)
+BANet - assertion gt_image != pre_image, gt_image 1D array
+A2FPN - assertion gt_image != pre_image, gt_image 1D array
